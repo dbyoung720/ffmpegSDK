@@ -1,6 +1,20 @@
 @echo off
 
-call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+for %%G in (Community,Professional,Enterprise) do (
+  if exist "C:\Program Files (x86)\Microsoft Visual Studio\2022\%%G" (
+    set "VSInstallPath=C:\Program Files (x86)\Microsoft Visual Studio\2022\%%G"
+  )
+  if exist "C:\Program Files\Microsoft Visual Studio\2022\%%G" (
+    set "VSInstallPath=C:\Program Files\Microsoft Visual Studio\2022\%%G"
+  )
+)
+if "%VSInstallPath%" == "" (
+  echo "Visual Studio 2022 not found"
+  pause
+  exit 1
+)
+
+call "%VSInstallPath%\VC\Auxiliary\Build\vcvars64.bat"
 
 cd..
 cd bin

@@ -1,2 +1,7 @@
 *.lib
 *.exp
+/nppig64_12.dll
+/nppc64_12.dll
+/nppicc64_12.dll
+/nppidei64_12.dll
+/nppif64_12.dll
